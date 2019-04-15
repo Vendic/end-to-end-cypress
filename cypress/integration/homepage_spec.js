@@ -37,36 +37,36 @@ describe('Homepage tests', function() {
     }) 
 
     it('[05] Main Navigation (Left menu or horizontal menu) including range titles', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
         // is menu visible, is design still intact?
     })
 
     it('[6] (optional) Showcase/Carousel – Check speed of updates and items displayed', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
     })
 
     it('[7] (optional) Other widgets', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
     })
 
     it('[8] (optional) Featured product boxes', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
     })
 
     it('[9] (optional) Offer boxes', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
     })
 
     it('[10] Footer – Information, About, Links, etc.', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
     })
 
     it('[11] Registration Page, Newsletter subscription (optional) Disable newsletter confirmation email', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
     })
 
     it('[12] Social Networking Links/Widgets', function(){
-        // VISUAL CHECK
+        // MANUAL CHECK
         // namelijk niet altijd aanwezig op home, en wanneer wel aanwezig niet hetzelfde qua html als andere sites.
     })
 

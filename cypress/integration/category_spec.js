@@ -16,31 +16,31 @@ describe('Category page tests', function() {
     it('[2] Reset all filters to revert page to original content', function() {
         cy.visit(baseURL)
         // TODO
-        // VISUAL
+        // MANUAL
     }) 
 
     it('[3] Sorting method selection works correctly', function() {
         cy.visit(baseURL)
         // TODO
-        // VISUAL
+        // MANUAL
     }) 
 
     it('[4] Category specific carousel or showcase', function() {
         cy.visit(baseURL)
         // TODO
-        // VISUAL
+        // MANUAL
     }) 
 
     it('[5] (optional) Add to Wishlist functionality', function() {
         cy.visit(baseURL)
         // TODO
-        // VISUAL
+        // MANUAL
     }) 
 
     it('[6] (optional) Compare products as selected', function() {
         cy.visit(baseURL)
         // TODO
-        // VISUAL
+        // MANUAL
     }) 
 
     it('[7] (optional) Product review stars', function() {
@@ -85,12 +85,12 @@ describe('Category page tests', function() {
     it('[14] Product Price and special price', function() {
         cy.visit(baseURL)
         // TODO 
-        // VISUAL ?
+        // MANUAL ?
     }) 
 
     it('[15] Product stock status', function() {
         // TODO
-        // VISUAL        
+        // MANUAL        
     }) 
 
 })
