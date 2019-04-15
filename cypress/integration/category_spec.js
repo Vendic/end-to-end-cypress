@@ -16,32 +16,37 @@ describe('Category page tests', function() {
 
     it('[2] Reset all filters to revert page to original content', function() {
         cy.visit(baseURL)
-        // VISUAL CHECK
+        // TODO
+        // VISUAL
     }) 
 
     it('[3] Sorting method selection works correctly', function() {
         cy.visit(baseURL)
-        // VISUAL CHECK
+        // TODO
+        // VISUAL
     }) 
 
     it('[4] Category specific carousel or showcase', function() {
         cy.visit(baseURL)
-        // VISUAL CHECK
+        // TODO
+        // VISUAL
     }) 
 
     it('[5] (optional) Add to Wishlist functionality', function() {
         cy.visit(baseURL)
-        // VISUAL CHECK
+        // TODO
+        // VISUAL
     }) 
 
     it('[6] (optional) Compare products as selected', function() {
         cy.visit(baseURL)
-        // VISUAL CHECK
+        // TODO
+        // VISUAL
     }) 
 
     it('[7] (optional) Product review stars', function() {
         cy.visit(baseURL)
-        cy.get('.product-reviews-summary')
+        cy.get('.product-reviews-summary').should('be.visible')
     }) 
 
     it('[8] List view / grid view', function() {
@@ -58,7 +63,6 @@ describe('Category page tests', function() {
     it('[10] Add to Cart button', function() {
         cy.visit(baseURL)
         cy.get('.product-item [data-role="tocart-form"]')
-        
     }) 
 
     it('[11] Meta title / description', function() {
@@ -66,27 +70,28 @@ describe('Category page tests', function() {
         cy.title()
         cy.document().get('head meta[name="description"]')
         .should('have.attr', 'content').and('not.be.empty')
-        
     }) 
 
     it('[12] Cannonical', function() {
         cy.visit(baseURL)
-        
+        cy.document().get('head link[rel="canonical"]')
+        .should('have.attr', 'href').and('not.be.empty')
     }) 
 
     it('[13] Rel=next Rel=prev on pages', function() {
         cy.visit(baseURL)
-        
+        // TODO
     }) 
 
     it('[14] Product Price and special price', function() {
         cy.visit(baseURL)
-        
+        // TODO 
+        // VISUAL ?
     }) 
 
     it('[15] Product stock status', function() {
-        cy.visit(baseURL)
-        
+        // TODO
+        // VISUAL        
     }) 
 
 })

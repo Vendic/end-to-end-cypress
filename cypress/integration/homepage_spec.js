@@ -8,9 +8,10 @@ describe('Homepage tests', function() {
     
     it('[02] Canonical', function() {
         cy.visit(baseURL)
-        cy.document().get('head link[rel="canonical"]') //doesn't work for some reason. rel="stylesheet" does work...
+        cy.document().get('head link[rel="canonical"]')
+        .should('have.attr', 'href').and('not.be.empty')
     })
-    
+
     it('[03] Page renders correctly as intended from the original design', function() {
         // cant be automated
     }) 
