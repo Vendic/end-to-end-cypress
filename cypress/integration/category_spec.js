@@ -1,4 +1,3 @@
-const baseURL2 = 'https://staging.cityplants.nl/bosske-cube'
 const baseURL = 'https://staging.plasmavisie.nl/4k-ultra-hd-tv'
 
 //  PROBLEM //
