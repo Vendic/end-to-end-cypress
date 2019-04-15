@@ -1,4 +1,5 @@
-const baseURL = 'https://staging.cityplants.nl/bosske-cube'
+const baseURL2 = 'https://staging.cityplants.nl/bosske-cube'
+const baseURL = 'https://staging.plasmavisie.nl/4k-ultra-hd-tv'
 
 //  PROBLEM //
 // I can't find a way to have the test go to or start at a category page.
@@ -45,22 +46,26 @@ describe('Category page tests', function() {
 
     it('[8] List view / grid view', function() {
         cy.visit(baseURL)
-        cy.get('.mode-grid').click().get('.products.wrapper').should('have.class', 'products-grid')
-        cy.get('.mode-list').click().get('.products.wrapper').should('have.class', 'products-list')
+        cy.get('.toolbar.toolbar-products:first-child .mode-grid').click().get('.products.wrapper').should('have.class', 'products-grid')
+        cy.get('.toolbar.toolbar-products:first-child .mode-list').click().get('.products.wrapper').should('have.class', 'products-list')
     }) 
 
     it('[9] Navigation Breadcrumb trail', function() {
         cy.visit(baseURL)
-        // VISUAL CHECK
+        cy.get('.breadcrumbs')
     }) 
 
     it('[10] Add to Cart button', function() {
         cy.visit(baseURL)
+        cy.get('.product-item [data-role="tocart-form"]')
         
     }) 
 
     it('[11] Meta title / description', function() {
         cy.visit(baseURL)
+        cy.title()
+        cy.document().get('head meta[name="description"]')
+        .should('have.attr', 'content').and('not.be.empty')
         
     }) 
 
