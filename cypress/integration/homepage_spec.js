@@ -39,10 +39,7 @@ describe('Homepage tests', function() {
     it('[05] Main Navigation (Left menu or horizontal menu) including range titles', function(){
         // MANUAL CHECK
         // is menu visible, is design still intact?
-    })
-
-    it('[6] (optional) Showcase/Carousel – Check speed of updates and items displayed', function(){
-        // MANUAL CHECK
+        cy.visit(baseURL)
     })
 
     it('[7] (optional) Other widgets', function(){

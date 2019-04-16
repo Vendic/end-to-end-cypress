@@ -7,7 +7,6 @@ const two = 'https://staging.sossolutions.nl/carberry-board-voor-de-auto-voor-ra
 describe('Product detail page tests', function() {
 
     it('[01] Product Data – Title, Description, Price, Special price, Attributes [dont show if empty] , etc', function() {
-        // kan alleen checken of filters aanwezig zijn, maar welke filters? niet alle sites hebben dezelfde set filters
         cy.visit(baseURL)
     })  
 
@@ -64,7 +63,6 @@ describe('Product detail page tests', function() {
         cy.visit(one)
         cy.get('.field.qty input#qty').should('be.visible').clear().type('3').should('be.value', '3')
     }) 
-
 
     it('[12] Add to compare (if active)', function() {
         
