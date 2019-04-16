@@ -1,9 +1,11 @@
-const baseURL = 'https://staging.plasmavisie.nl/samsung-qe65q9fn-2018'
+const baseURL = 'https://staging.plasmavisie.nl/philips-43pus7303-12'
+const one = 'https://staging.cityplants.nl/wolf-garten-sn-m-42-sneeuwschep-42cm-kunststof'
+const two = 'https://staging.sossolutions.nl/carberry-board-voor-de-auto-voor-raspberry-pi-nieuwe-model'
 
 // These tests are written assuming the test runs on the correct page
 
 describe('Product detail page tests', function() {
-     
+
     it('[01] Product Data – Title, Description, Price, Special price, Attributes [dont show if empty] , etc', function() {
         // kan alleen checken of filters aanwezig zijn, maar welke filters? niet alle sites hebben dezelfde set filters
         cy.visit(baseURL)
@@ -74,15 +76,21 @@ describe('Product detail page tests', function() {
     }) 
 
     it('[14] Navigation Breadcrumb trail', function() {
-        
+        cy.visit(baseURL)
+        cy.get('.breadcrumbs').should('be.visible')
     }) 
 
     it('[15] Meta title / description', function() {
-        
+        cy.visit(baseURL)
+        cy.title()
+        cy.document().get('head meta[name="description"]')
+        .should('have.attr', 'content').and('not.be.empty')
     }) 
 
     it('[16] Cannonical', function() {
-        
+        cy.visit(baseURL)
+        cy.document().get('head link[rel="canonical"]')
+        .should('have.attr', 'href').and('not.be.empty')
     }) 
 
     it('[17] Reviews (create / view)', function() {
@@ -90,13 +98,10 @@ describe('Product detail page tests', function() {
     }) 
 
     it('[18] Place Holder Image', function() {
-        
+        cy.visit(baseURL)
+        // TODO - test of img src placeholder of /media/catalog heeft. In  beide gevallen is het goed en klopt de test. 
+        // Nu word er afzonderlijk getest (in [2] Product Images) of er product images zijn, en hier of er placeholders zijn.
+        cy.get('.product.media img').should('have.attr', 'src').and('contain', 'placeholder')
     }) 
-
-
-    
-
-
-    
 
 })
