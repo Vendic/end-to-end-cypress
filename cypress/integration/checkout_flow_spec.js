@@ -38,7 +38,8 @@ describe('Test the checkout flow', function() {
     it('Enters customer information', function() {
         cy.server()
         cy.route('POST','**/estimate-shipping-methods').as('toCheckout')
-        cy.wait('@toCheckout')
+        .wait(6000)
+        // cy.wait('@toCheckout')
         cy.get('#checkout-step-shipping [name="username"]').type(userName).should('have.value', userName)
         cy.get('#checkout-step-shipping [name="firstname"]').type(firstName).should('have.value', firstName)
         cy.get('#checkout-step-shipping [name="lastname"]').type(lastName).should('have.value', lastName)
@@ -47,6 +48,14 @@ describe('Test the checkout flow', function() {
         cy.get('#checkout-step-shipping [name="city"]').type(city).should('have.value', city)
         cy.get('#checkout-step-shipping [name="postcode"]').type(postcode).should('have.value', postcode)
         cy.get('#checkout-step-shipping [name="telephone"]').type(telephone).should('have.value', telephone)
+        cy.get('.table-checkout-shipping-method input[value="tig_postnl_regular"]').check()
+        cy.get('#shipping-method-buttons-container [data-role="opc-continue"]').click()
+        .wait(3000)
+        cy.get('.opc-progress-bar-item._active span').contains('Overzicht & betalen')
+        cy.get('#cashondelivery').click()
+        cy.get('.payment-method._active').find('.actions-toolbar button.checkout[type="submit"]').click()
+        .wait(6000)
+        .url().should('contain', '/checkout/onepage/success/')
     })
  
 
