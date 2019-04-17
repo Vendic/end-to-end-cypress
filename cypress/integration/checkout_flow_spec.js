@@ -11,6 +11,7 @@ let telephone = '0570745440'
 
 
 describe('Test the checkout flow', function() {
+    Cypress.Cookies.preserveOnce()
 
     it('Should navigate to a product', function() {
         cy.visit(baseURL)
@@ -58,27 +59,4 @@ describe('Test the checkout flow', function() {
         .url().should('contain', '/checkout/onepage/success/')
     })
  
-
-    it('Should navigate to a product, add it to the cart and remove it', function() {                       
-            
-            // UPDATE QTY IN CART
-                // .get('[data-role="cart-item-qty"]').clear().type('2').wait(1000).get('button[data-cart-item-update]').click()
-                // .get('[data-role="cart-item-qty"]').should('have.value', '2')
-
-            // REMOVE FROM CART 
-                //.get('.action-delete').click()
-                //.get('.cart-empty').should('be.visible')
-
-            // MINI CART CHECKS
-                // .get('.minicart-wrapper .showcart').click()
-                // .get('.block-minicart #mini-cart .product-image-photo').should('have.attr', 'src').should('contain', '/media/catalog')
-                // .get('.block-minicart #mini-cart .minicart-price').contains(/(\d+\,|.\d{1,2})/).and('be.visible')
-                // .get('.block-minicart #mini-cart .cart-item-qty').should('be.visible').clear().type('3').siblings('.update-cart-item').should('be.visible').click()
-                // .get('.block-minicart #mini-cart .cart-item-qty').should('have.value', '3')
-
-
-            // via minicart naar basket
-            // functies maken van bijv. add-to-cart om te hergebruiken. De ene via de success alert en de ander via de mini basket
-            // mini basket hoeft nu niet per se gecheckt te worden
-    }) 
 })  
