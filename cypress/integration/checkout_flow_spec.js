@@ -20,11 +20,11 @@ describe('Test the checkout flow', function() {
             .should('be.visible')
             .get('ul li.nav-1 a')
             .click()
-            .url().should('contain', '/led-televisie')
     })
 
     it('Clicks on a product, visits the product detail page and adds product to cart', function() {
         cy.get('.products-grid .product-items .product-item').eq(0)
+        .wait(1500)
         .find('a.product').click()
         .get('#product-addtocart-button').should('be.visible')
         .wait(2000)  
@@ -32,13 +32,13 @@ describe('Test the checkout flow', function() {
         cy.get('.page.messages [data-bind="html: message.text"] a').should('contain', 'je winkelmand').click()
         .url().should('contain', '/cart')      
         .get('.cart.item .photo.image').should('have.attr', 'src').should('contain', '/media/catalog/')      
-        cy.wait(150)
+        cy.wait(1500)
         cy.get('.checkout-methods-items button').click({ force: true })          
     })
 
     it('Enters customer information', function() {
         cy.server()
-        cy.route('POST','**/estimate-shipping-methods').as('toCheckout')
+        cy.route('POST','**?sections=cart').as('toCheckout')
         .wait(6000)
         // cy.wait('@toCheckout')
         cy.get('#checkout-step-shipping [name="username"]').type(userName).should('have.value', userName)
@@ -54,9 +54,9 @@ describe('Test the checkout flow', function() {
         .wait(3000)
         cy.get('.opc-progress-bar-item._active span').contains('Overzicht & betalen')
         cy.get('#cashondelivery').click()
-        cy.get('.payment-method._active').find('.actions-toolbar button.checkout[type="submit"]').click()
-        .wait(6000)
-        .url().should('contain', '/checkout/onepage/success/')
+        // cy.get('.payment-method._active').find('.actions-toolbar button.checkout[type="submit"]').click()
+        // .wait(6000)
+        // .url().should('contain', '/checkout/onepage/success/')
     })
  
 })  
