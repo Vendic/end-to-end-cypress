@@ -50,9 +50,9 @@ describe('Test the checkout flow', function() {
         cy.wait(3001)
         cy.get('.opc-progress-bar-item._active span').contains('Overzicht & betalen')
         cy.get('#cashondelivery').click()
-        // cy.get('.payment-method._active').find('.actions-toolbar button.checkout[type="submit"]').click()
-        // .wait(6000)
-        // .url().should('contain', '/checkout/onepage/success/')
+        cy.get('.payment-method._active').find('.actions-toolbar button.checkout[type="submit"]').click()
+        .wait(6000)
+        .url().should('contain', '/checkout/onepage/success/')
     })
  
 })  
