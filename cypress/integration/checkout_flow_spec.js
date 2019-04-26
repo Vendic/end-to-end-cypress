@@ -1,4 +1,4 @@
-let baseURL = 'https://staging.plasmavisie.nl/'
+let baseURL = 'staging.plasmavisie.nl'
 let userName = 'robbert@vendic.nl'
 let firstName = 'Robbert'
 let lastName = 'Gijsberts'
@@ -17,21 +17,17 @@ describe('Test the checkout flow', function() {
         cy.visit(baseURL)
         
         cy.get('.navigation')
-            .should('be.visible')
-            .get('ul li.nav-1 a')
-            .click()
+        cy.should('be.visible')
+        cy.get('ul li.nav-1 a')
+        .click()
     })
 
     it('Clicks on a product, visits the product detail page and adds product to cart', function() {
-        cy.get('.products-grid .product-items .product-item').eq(0)
-        .wait(1500)
-        .find('a.product').click()
-        .get('#product-addtocart-button').should('be.visible')
-        .wait(2000)  
-        .click()
+        cy.get('.products-grid .product-items .product-item').eq(0).wait(1500).find('a.product').click()
+        cy.get('#product-addtocart-button').should('be.visible').wait(2000).click()
         cy.get('.page.messages [data-bind="html: message.text"] a').should('contain', 'je winkelmand').click()
-        .url().should('contain', '/cart')      
-        .get('.cart.item .photo.image').should('have.attr', 'src').should('contain', '/media/catalog/')      
+        cy.url().should('contain', '/cart')      
+        cy.get('.cart.item .photo.image').should('have.attr', 'src').should('contain', '/media/catalog/')      
         cy.wait(1500)
         cy.get('.checkout-methods-items button').click({ force: true })          
     })
@@ -39,7 +35,7 @@ describe('Test the checkout flow', function() {
     it('Enters customer information', function() {
         cy.server()
         cy.route('POST','**?sections=cart').as('toCheckout')
-        .wait(6000)
+        cy.wait(6000)
         // cy.wait('@toCheckout')
         cy.get('#checkout-step-shipping [name="username"]').type(userName).should('have.value', userName)
         cy.get('#checkout-step-shipping [name="firstname"]').type(firstName).should('have.value', firstName)
@@ -51,7 +47,7 @@ describe('Test the checkout flow', function() {
         cy.get('#checkout-step-shipping [name="telephone"]').type(telephone).should('have.value', telephone)
         cy.get('.table-checkout-shipping-method input[value="tig_postnl_regular"]').check()
         cy.get('#shipping-method-buttons-container [data-role="opc-continue"]').click()
-        .wait(3000)
+        cy.wait(3001)
         cy.get('.opc-progress-bar-item._active span').contains('Overzicht & betalen')
         cy.get('#cashondelivery').click()
         // cy.get('.payment-method._active').find('.actions-toolbar button.checkout[type="submit"]').click()
